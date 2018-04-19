@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: copy  sudoers file
+      copy:
+        src: <path> 
+        dest: <path> 
+        mode: 0644
+        owner: root
+        group: root
+        validate: /usr/sbin/visudo -cf %s
+      become: yes
